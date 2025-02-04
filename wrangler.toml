@@ -1,0 +1,3 @@
+name = "web-site"
+type = "javascript"
+build = "npm install && npm run build"
