@@ -28,11 +28,16 @@ const carouselItems = [
 
 const BodyContent = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [fade, setFade] = useState(true);
   const currentItem = carouselItems[currentIndex];
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
+      setFade(false);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => (prevIndex + 1) % carouselItems.length);
+        setFade(true);
+      }, 500);
     }, 6000);
 
     return () => clearInterval(timer);
@@ -58,7 +63,8 @@ const BodyContent = () => {
           objectFit: "cover",
           imageRendering: "auto",
           filter: "brightness(70%)",
-          transition: "transform 1s ease-in-out",
+          opacity: fade ? 1 : 0,
+          transition: "opacity 0.5s ease-in-out",
         }}
       />
 
@@ -104,10 +110,10 @@ const BodyContent = () => {
         <Button
           variant="contained"
           sx={{
-            backgroundColor: "#1976D2",
+            backgroundColor: "#3463ac",
             color: "white",
             "&:hover": {
-              backgroundColor: "#1565C0",
+              backgroundColor: "#e06600",
             },
             fontWeight: "bold",
           }}
@@ -135,7 +141,7 @@ const BodyContent = () => {
               width: 12,
               height: 12,
               borderRadius: "50%",
-              backgroundColor: currentIndex === index ? "#1976D2" : "#ccc",
+              backgroundColor: currentIndex === index ? "#3463ac" : "#ccc",
               transition: "background-color 0.3s",
               cursor: "pointer",
             }}
