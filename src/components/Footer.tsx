@@ -37,7 +37,11 @@ const Footer = () => {
           <Typography variant="h6" fontWeight="bold" gutterBottom>
             Quick Links
           </Typography>
-          <Box>
+          <Box
+            display="flex"
+            flexDirection="column"
+            alignItems={{ xs: "center", md: "flex-start" }}
+          >
             <Link
               component="button"
               onClick={() => scrollToSection("solutions")}

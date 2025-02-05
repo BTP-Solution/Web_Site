@@ -1,4 +1,15 @@
-import { AppBar, Toolbar, Button, Box, IconButton, Drawer, List, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import {
+  AppBar,
+  Toolbar,
+  Button,
+  Box,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo2.png";
 import { useState, useEffect } from "react";
@@ -19,7 +30,8 @@ function Header() {
       const element = document.getElementById(id);
       if (element) {
         const yOffset = -80;
-        const y = element.getBoundingClientRect().top + window.scrollY + yOffset;
+        const y =
+          element.getBoundingClientRect().top + window.scrollY + yOffset;
         window.scrollTo({ top: y, behavior: "smooth" });
 
         setTimeout(() => {
@@ -73,13 +85,23 @@ function Header() {
         zIndex: 1100,
       }}
     >
-      <Toolbar sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <Toolbar
+        sx={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+      >
         {/* Logo */}
         <Box
           component="img"
           src={logo}
           alt="BTP Solution Logo"
-          sx={{ width: { xs: 120, md: 150 }, cursor: "pointer", display: "block" }}
+          sx={{
+            width: { xs: 120, md: 150 },
+            cursor: "pointer",
+            display: "block",
+          }}
           onClick={() => handleNavigate()}
         />
 
@@ -147,7 +169,7 @@ function Header() {
               fontWeight: "bold",
               textTransform: "none",
               "&:hover": {
-                backgroundColor: "#5E35B1"
+                backgroundColor: "#2e599a",
               },
             }}
             onClick={() => handleNavigate("contact-form")}

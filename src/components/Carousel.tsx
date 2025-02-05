@@ -82,13 +82,16 @@ const BodyContent = () => {
           alignItems: "center",
           textAlign: "center",
           color: "white",
-          px: 3,
         }}
       >
         <Typography
           variant="h4"
-          component="h1"
           sx={{
+            fontSize: {
+              xs: "1.5rem",
+              sm: "2rem",
+              md: "2.5rem",
+            },
             fontWeight: "bold",
             mb: 2,
             textShadow: "2px 2px 6px rgba(0, 0, 0, 0.7)",
@@ -118,9 +121,9 @@ const BodyContent = () => {
             textTransform: "none",
             fontSize: { xs: "0.9rem", md: "1rem" },
             px: { xs: 3, md: 5 },
-            py: { xs: 1.5, md: 2 },
+            py: 1,
             "&:hover": {
-              backgroundColor: "#e06600",
+              backgroundColor: "#2e599a",
             },
           }}
           onClick={() => scrollToSection("contact-form")}
