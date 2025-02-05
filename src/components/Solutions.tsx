@@ -56,7 +56,7 @@ const Solutions = () => {
     >
       {/* Section Header */}
       <Box textAlign="center" mb={6}>
-        <Typography variant="h4" fontWeight="bold" color="#1976D2" gutterBottom>
+        <Typography variant="h4" fontWeight="bold" color="#3463ac" gutterBottom>
           SAP Solutions and Modules
         </Typography>
         <Typography
