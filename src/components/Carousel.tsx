@@ -48,7 +48,7 @@ const BodyContent = () => {
       sx={{
         position: "relative",
         width: "100%",
-        height: { xs: 300, sm: 450, md: 700 },
+        height: { xs: 450, sm: 500, md: 700 },
         overflow: "hidden",
       }}
     >
@@ -61,10 +61,10 @@ const BodyContent = () => {
           width: "100%",
           height: "100%",
           objectFit: "cover",
-          imageRendering: "auto",
-          filter: "brightness(70%)",
-          opacity: fade ? 1 : 0,
-          transition: "opacity 0.5s ease-in-out",
+          filter: "brightness(85%)",
+          opacity: fade ? 1 : 0.5,
+          transform: fade ? "scale(1)" : "scale(1.05)",
+          transition: "opacity 0.5s ease-in-out, transform 1s ease-in-out",
         }}
       />
 
@@ -83,16 +83,16 @@ const BodyContent = () => {
           textAlign: "center",
           color: "white",
           px: 3,
-          backdropFilter: "blur(3px)",
         }}
       >
         <Typography
-          variant="h3"
+          variant="h4"
           component="h1"
           sx={{
             fontWeight: "bold",
             mb: 2,
-            textShadow: "2px 2px 4px rgba(0, 0, 0, 0.6)",
+            textShadow: "2px 2px 6px rgba(0, 0, 0, 0.7)",
+            px: { xs: 2, sm: 4 },
           }}
         >
           {currentItem.title}
@@ -100,9 +100,11 @@ const BodyContent = () => {
         <Typography
           variant="body1"
           sx={{
-            maxWidth: "600px",
+            maxWidth: "700px",
             mb: 3,
-            textShadow: "1px 1px 3px rgba(0, 0, 0, 0.5)",
+            textShadow: "1px 1px 4px rgba(0, 0, 0, 0.6)",
+            fontSize: { xs: "1rem", md: "1.2rem" },
+            px: { xs: 2, sm: 4 },
           }}
         >
           {currentItem.description}
@@ -112,10 +114,14 @@ const BodyContent = () => {
           sx={{
             backgroundColor: "#3463ac",
             color: "white",
+            fontWeight: "bold",
+            textTransform: "none",
+            fontSize: { xs: "0.9rem", md: "1rem" },
+            px: { xs: 3, md: 5 },
+            py: { xs: 1.5, md: 2 },
             "&:hover": {
               backgroundColor: "#e06600",
             },
-            fontWeight: "bold",
           }}
           onClick={() => scrollToSection("contact-form")}
         >
@@ -131,19 +137,20 @@ const BodyContent = () => {
           left: "50%",
           transform: "translateX(-50%)",
           display: "flex",
-          gap: 1,
+          gap: 1.5,
         }}
       >
         {carouselItems.map((_, index) => (
           <Box
             key={index}
             sx={{
-              width: 12,
-              height: 12,
+              width: 14,
+              height: 14,
               borderRadius: "50%",
               backgroundColor: currentIndex === index ? "#3463ac" : "#ccc",
-              transition: "background-color 0.3s",
+              transition: "background-color 0.3s, transform 0.2s",
               cursor: "pointer",
+              transform: currentIndex === index ? "scale(1.3)" : "scale(1)",
             }}
             onClick={() => setCurrentIndex(index)}
           />

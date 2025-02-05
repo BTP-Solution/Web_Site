@@ -6,9 +6,8 @@ import { useState, useEffect } from "react";
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [visible, setVisible] = useState(true);
-  const [mouseNearTop, setMouseNearTop] = useState(false);
-  const [scrollingUp, setScrollingUp] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [mouseNearTop, setMouseNearTop] = useState(false);
   const [hoveringSolutions, setHoveringSolutions] = useState(false);
 
   const handleToggleMenu = () => {
@@ -35,12 +34,11 @@ function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      setScrollingUp(currentScrollY < lastScrollY);
 
-      if (currentScrollY > lastScrollY && currentScrollY > 100 && !mouseNearTop) {
-        setVisible(false);
-      } else if (scrollingUp || mouseNearTop) {
-        setVisible(true);
+      if (currentScrollY < lastScrollY || currentScrollY < 100) {
+        setVisible(true); // Yukarı kaydırıldığında header görünsün
+      } else {
+        setVisible(false); // Aşağı kaydırıldığında header gizlensin
       }
 
       setLastScrollY(currentScrollY);
@@ -62,7 +60,7 @@ function Header() {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("mousemove", handleMouseMove);
     };
-  }, [mouseNearTop, scrollingUp]);
+  }, [lastScrollY]);
 
   return (
     <AppBar
@@ -124,7 +122,7 @@ function Header() {
               },
               "&::after": {
                 content: '""',
-                position: "absolute", 
+                position: "absolute",
                 bottom: "-5px",
                 width: hoveringSolutions ? "80%" : "0%",
                 height: "3px",
@@ -149,7 +147,7 @@ function Header() {
               fontWeight: "bold",
               textTransform: "none",
               "&:hover": {
-                backgroundColor: "#3463ac",
+                backgroundColor: "#5E35B1"
               },
             }}
             onClick={() => handleNavigate("contact-form")}
